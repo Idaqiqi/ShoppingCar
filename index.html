@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>ShoppingCar</title>
+  <link href="fontsome/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="css/shopcar.css">
+ </head>
+ <body style="background:#f1f1f1">
+	<div class="shop-header">
+		<div class="wrap">
+			<div class="header-logo fl"></div>
+			<div class="header-title fl">
+				<h2>我的购物车</h2>
+			</div>
+			<div class="userinfo fr"><i class="fa fa-user"></i>&nbsp;kery</div>
+		</div>
+	</div>
+
+	<div class="shop_info" id="shopCar">
+		<div class="wrap">
+			<div class="shop_goods_list">
+                <div class="list-head clearfix">
+					<!--点击绑定或移除class-->
+                    <div class="col col-check"><i class="iconfont icon-checkbox " id="K_selectAll" @click="selectAll" :class="{'icon-checkbox-selected':selectAllFlag}">√</i>全选</div>
+                    <div class="col col-img">&nbsp;</div>
+                    <div class="col col-name">商品名称</div>
+                    <div class="col col-price">单价</div>
+                    <div class="col col-num">数量</div>
+                    <div class="col col-total">小计</div>
+                    <div class="col col-action">操作</div>
+                </div>
+                <div class="list-body" v-for="(product,index) in productList">
+					<div class="item-box"> 
+						<div class="item-table K_cartGoods"> 
+							<div class="item-row clearfix"> 
+								<div class="col col-check">  
+									<i class=" icon-checkbox"  @click="selectProduct(index)" :class="{'icon-checkbox-selected':product.productSelectedFlag}">√</i>
+								</div> 
+								<div class="col col-img">  
+									<a href="http://item.mi.com/1134900527.html" target="_blank"> 
+										<img alt="" :src="product.productImage"  width="80" height="80">
+									</a>  
+								</div> 
+								<div class="col col-name">  
+									<div class="tags"> </div>  
+									<h3 class="name">  
+										<a href="http://item.mi.com/1134900527.html" target="_blank"> {{product.productName}} </a>
+									</h3>   
+									<p class="desc"> <span>适配机型：</span> 小米平板 / 1 / 1S, 红米1S/红米, 红米Note/增强版, 红米手机2, 红米手机2A </p>
+								</div> 
+								<div class="col col-price"><i class="fa fa-cny"></i>{{product.productPrice}}元 </div>
+								<div class="col col-num">  
+									<div class="change-goods-num clearfix K_changeGoodsNum"> 
+										<a href="javascript:void(0)" class="K_minus fl" @click="cutProduct(index)"><i class="fa fa-minus"></i></a>
+										<input type="text" :value="product.productNum" @input="listenNum(product)" autocomplete="off" class="goods-num K_goodsNum fl" v-model="product.productNum">
+										<!--<span class="s-num">1</span>-->
+										<a href="javascript:void(0)" class="K_plus fr" @click="addProduct(index)"><i class="fa fa-plus"></i></a>
+									</div>  
+								</div> 
+								<div class="col col-total"> <i class="fa fa-cny"></i><span class="t_price">{{product.productPrice}}</span>元 <p class="pre-info">  </p> </div>
+								<div class="col col-action">
+									<a href="javascript:void(0);" title="删除" class="del K_delGoods" @click="deleteProduct(index)">
+										<i class="fa fa-remove"></i>
+									</a> 
+								</div> 
+							</div> 
+						</div>
+					</div>
+				</div>  		
+            </div>
+			<div class="cart-bar clearfix" id="K_cartBar">
+					<div class="section-left">
+						<a href="http://list.mi.com/0" class="back-shopping K_goShoping" data-stat-id="3d1e5bdd191768c8" onclick="_msq.push(['trackEvent', '08fae3d5cb3abaaf-3d1e5bdd191768c8', '#', 'pcpid']);">继续购物</a>
+						<span class="cart-total">共 <i id="K_cartTotalNum">{{totalNum}}</i> 件商品，已选择 <i id="K_selTotalNum">{{selectTotalNum}}</i> 件</span>
+						<span class="cart-coudan hide" id="K_coudanTip">
+							，还需 <i id="K_postFreeBalance"></i> 元即可免邮费  <a href="javascript:void(0);" id="K_showCoudan" data-stat-id="69b06f1a9d2d512c" onclick="_msq.push(['trackEvent', '08fae3d5cb3abaaf-69b06f1a9d2d512c', 'javascript:void(0);', 'pcpid']);">立即凑单</a>
+						</span>
+					</div>
+					<span class="activity-money hide">
+						活动优惠：减 <i id="K_cartActivityMoney">0</i> 元
+					</span>
+					<span class="total-price">
+						合计（不含运费）：<em id="K_cartTotalPrice">{{totalMoney}}</em>元
+					</span>
+					<a href="javascript:void(0);" class="btn btn-a btn-primary" id="K_goCheckout" >去结算</a>
+
+					<div class="no-select-tip hide" id="K_noSelectTip">
+						请勾选需要结算的商品
+						<i class="arrow arrow-a"></i>
+						<i class="arrow arrow-b"></i>
+					</div>
+				</div>
+		</div>
+	</div>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.min.js"></script>
+	<script src="js/shopcar.js"></script>
+ </body>
+</html>

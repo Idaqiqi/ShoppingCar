@@ -1,0 +1,50 @@
+{
+	"status":1,
+	"result":{
+		"totalMoney":100,
+		"list":[
+			{
+				"productId":"001",
+				"productName":" SanDisk 16GB存储卡（Class4） 黑色 ",
+				"productPrice":10,
+				"productNum":1,
+				"productSelectedFlag":false,
+				"productImage":"img/goods-1.jpg",
+				"parts":[
+					{
+						"partsId":"001-1",
+						"partsName":"打火机"
+					}
+				]
+			},
+			{
+				"productId":"002",
+				"productName":" SanDisk 16GB存储卡（Class4） 蓝色 ",
+				"productPrice":20,
+				"productNum":2,
+				"productSelectedFlag":false,
+				"productImage":"img/goods-2.jpg",
+				"parts":[
+					{
+						"partsId":"001-2",
+						"partsName":"鼠标"
+					}
+				]
+			},
+			{
+				"productId":"003",
+				"productName":" SanDisk 16GB存储卡（Class4） 红色 ",
+				"productPrice":5,
+				"productNum":2,
+				"productSelectedFlag":false,
+				"productImage":"img/goods-3.jpg",
+				"parts":[
+					{
+						"partsId":"001-3",
+						"partsName":"电池"
+					}
+				]
+			}
+		]
+	}
+}
